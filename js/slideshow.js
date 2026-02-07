@@ -167,26 +167,32 @@ class MemorialSlideshow {
         const refEnglish = slideElement.querySelector('.verse-ref-english');
         const refThai = slideElement.querySelector('.verse-ref-thai');
 
-        // Fade out English
+        // Phase 1: Fade out English (1s)
         anime({
             targets: [verseEnglish, refEnglish],
-            opacity: 0,
-            duration: 800,
-            easing: 'easeInOutQuad',
+            opacity: [1, 0],
+            duration: 1000,
+            easing: 'easeInQuad',
             complete: () => {
-                // Swap visibility
+                // Swap display after fully faded out
                 verseEnglish.classList.add('hidden');
                 refEnglish.classList.add('hidden');
+
+                // Prep Thai at opacity 0 before showing
+                verseThai.style.opacity = '0';
+                refThai.style.opacity = '0';
                 verseThai.classList.add('visible');
                 refThai.classList.add('visible');
 
-                // Fade in Thai
-                anime({
-                    targets: [verseThai, refThai],
-                    opacity: [0, 1],
-                    duration: 800,
-                    easing: 'easeInOutQuad'
-                });
+                // Phase 2: Brief pause, then fade in Thai (1s)
+                setTimeout(() => {
+                    anime({
+                        targets: [verseThai, refThai],
+                        opacity: [0, 1],
+                        duration: 1000,
+                        easing: 'easeOutQuad'
+                    });
+                }, 300);
             }
         });
     }
@@ -606,14 +612,38 @@ class MemorialSlideshow {
 
         const daisyCount = 11;
         const baseSize = Math.max(30, Math.min(window.innerWidth, window.innerHeight) * 0.03);
+        const placed = []; // track center points + radii for collision
 
         for (let i = 0; i < daisyCount; i++) {
-            const bar = space.bars[Math.floor(Math.random() * space.bars.length)];
             const size = baseSize + Math.random() * baseSize * 2;
+            const radius = size / 2;
+            let x, y, cx, cy;
+            let valid = false;
+
+            // Try up to 30 positions to avoid overlap
+            for (let attempt = 0; attempt < 30; attempt++) {
+                const bar = space.bars[Math.floor(Math.random() * space.bars.length)];
+                x = bar.x + Math.random() * Math.max(0, bar.width - size);
+                y = Math.random() * Math.max(0, bar.height - size);
+                cx = x + radius;
+                cy = y + radius;
+
+                valid = placed.every(p => {
+                    const dx = cx - p.cx;
+                    const dy = cy - p.cy;
+                    const minDist = radius + p.radius;
+                    return (dx * dx + dy * dy) >= (minDist * minDist);
+                });
+
+                if (valid) break;
+            }
+
+            if (!valid) continue; // skip this daisy if no space found
+
+            placed.push({ cx, cy, radius });
+
             const opacity = 0.04 + Math.random() * 0.07;
             const rotation = Math.random() * 360;
-            const x = bar.x + Math.random() * Math.max(0, bar.width - size);
-            const y = Math.random() * Math.max(0, bar.height - size);
             const color = `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
 
             const daisy = document.createElement('div');

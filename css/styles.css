@@ -135,7 +135,6 @@ html, body {
     font-style: italic;
     line-height: 1.6;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: opacity 1s ease-in-out;
 }
 
 .verse-thai {
@@ -162,7 +161,6 @@ html, body {
     font-weight: 500;
     letter-spacing: 0.05em;
     opacity: 0.9;
-    transition: opacity 1s ease-in-out;
 }
 
 .verse-ref-thai {
