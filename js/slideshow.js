@@ -656,11 +656,8 @@ class MemorialSlideshow {
             const y = vh * 0.1 + Math.random() * vh * 0.6;
             const rotation = Math.random() * 360;
 
-            const useDark = Math.random() > 0.5;
             const opacity = 0.08 + Math.random() * 0.06;
-            const color = useDark
-                ? `rgba(0, 0, 0, ${opacity.toFixed(3)})`
-                : `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
+            const color = `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
 
             const daisy = document.createElement('div');
             daisy.className = 'daisy';
@@ -707,11 +704,8 @@ class MemorialSlideshow {
             if (!valid) continue;
             placed.push({ cx, cy, radius });
 
-            const useDark = Math.random() > 0.5;
             const opacity = 0.04 + Math.random() * 0.07;
-            const color = useDark
-                ? `rgba(0, 0, 0, ${opacity.toFixed(3)})`
-                : `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
+            const color = `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
             const rotation = Math.random() * 360;
 
             const daisy = document.createElement('div');

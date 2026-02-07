@@ -14,32 +14,63 @@
       "transition": "fadeBlack",
       "kenBurns": true,
       "isStart": true
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/IMG_3259.jpg",
+      "src": "photos/615086902_10241525041285204_9049066342883906713_n.jpg",
       "duration": 8000,
-      "transition": "fadeWhite",
+      "transition": "slideLeft",
       "kenBurns": true
-    }
-,
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4336.PNG",
+      "duration": 8000,
+      "transition": "slideRight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4286.PNG",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/prayer-1.jpeg",
+      "duration": 8000,
+      "transition": "slideDown",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/614542532_10241525042405232_2832760890536326583_n.jpg",
+      "duration": 8000,
+      "transition": "fadeBlack",
+      "kenBurns": true
+    },
     {
       "type": "photo",
       "src": "photos/IMG_3260.JPG",
       "duration": 8000,
-      "transition": "slideRight",
+      "transition": "fadeWhite",
       "kenBurns": true
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/PXL_20251003_004409200.jpg",
+      "src": "photos/IMG_4292.PNG",
       "duration": 8000,
-      "transition": "fadeBlack",
+      "transition": "hearts",
       "kenBurns": true
-    }
-,
+    },
+    {
+      "type": "photo",
+      "src": "photos/615348293_10241525040965196_2510924095622310768_n.jpg",
+      "duration": 8000,
+      "transition": "heavensLight",
+      "kenBurns": true
+    },
     {
       "type": "verse",
       "text": "Do not let your hearts be troubled. You believe in God; believe also in me. My Father's house has many rooms; if that were not so, would I have told you that I am going there to prepare a place for you?",
@@ -50,32 +81,63 @@
       "textColor": "#FFFFFF",
       "duration": 10000,
       "transition": "heavensLight"
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/IMG_4644.PNG",
+      "src": "photos/615200845_10241525044285279_8698591925590204367_n.jpg",
       "duration": 8000,
-      "transition": "slideLeft",
+      "transition": "heavensLight",
       "kenBurns": true
-    }
-,
+    },
     {
       "type": "photo",
       "src": "photos/IMG_4352.PNG",
       "duration": 8000,
-      "transition": "hearts",
+      "transition": "slideLeft",
       "kenBurns": true
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/IMG_5029.JPG",
+      "src": "photos/PXL_20240617_003516542.MP.jpg",
       "duration": 8000,
       "transition": "slideRight",
       "kenBurns": true
-    }
-,
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4295.PNG",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/614296637_10241525042925245_1023048632400891487_n.jpg",
+      "duration": 8000,
+      "transition": "slideDown",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_2077.JPG",
+      "duration": 8000,
+      "transition": "fadeBlack",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4289.PNG",
+      "duration": 8000,
+      "transition": "fadeWhite",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4281.PNG",
+      "duration": 8000,
+      "transition": "hearts",
+      "kenBurns": true
+    },
     {
       "type": "verse",
       "text": "He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away.",
@@ -86,32 +148,63 @@
       "textColor": "#FFFFFF",
       "duration": 10000,
       "transition": "fadeWhite"
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/IMG_4336.PNG",
+      "src": "photos/IMG_4285.PNG",
+      "duration": 8000,
+      "transition": "hearts",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4304.PNG",
+      "duration": 8000,
+      "transition": "heavensLight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4296.PNG",
+      "duration": 8000,
+      "transition": "slideLeft",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4302.PNG",
+      "duration": 8000,
+      "transition": "slideRight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/614550334_10241525043045248_5856297950292891474_n.jpg",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/family.jpeg",
       "duration": 8000,
       "transition": "slideDown",
       "kenBurns": true
-    }
-,
+    },
     {
       "type": "photo",
       "src": "photos/IMG_3613.PNG",
       "duration": 8000,
-      "transition": "slideUp",
+      "transition": "fadeBlack",
       "kenBurns": true
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/PXL_20230510_160534075.MP.jpg",
+      "src": "photos/614858271_10241525042245228_6729271301812006848_n.jpg",
       "duration": 8000,
-      "transition": "slideLeft",
+      "transition": "fadeWhite",
       "kenBurns": true
-    }
-,
+    },
     {
       "type": "verse",
       "text": "Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me.",
@@ -122,32 +215,63 @@
       "textColor": "#333333",
       "duration": 10000,
       "transition": "fadeWhite"
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/IMG_2077.JPG",
+      "src": "photos/IMG_4298.PNG",
       "duration": 8000,
-      "transition": "slideDown",
+      "transition": "fadeWhite",
       "kenBurns": true
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/IMG_4334.PNG",
-      "duration": 8000,
-      "transition": "slideUp",
-      "kenBurns": true
-    }
-,
-    {
-      "type": "photo",
-      "src": "photos/IMG_4431.JPG",
+      "src": "photos/IMG_4300.PNG",
       "duration": 8000,
       "transition": "hearts",
       "kenBurns": true
-    }
-,
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4418.JPG",
+      "duration": 8000,
+      "transition": "heavensLight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/PXL_20241118_033356092.jpg",
+      "duration": 8000,
+      "transition": "slideLeft",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4301.PNG",
+      "duration": 8000,
+      "transition": "slideRight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4280.PNG",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/prayer-2.jpeg",
+      "duration": 8000,
+      "transition": "slideDown",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/614588562_10241525041685214_2043024606673537310_n.jpg",
+      "duration": 8000,
+      "transition": "fadeBlack",
+      "kenBurns": true
+    },
     {
       "type": "verse",
       "text": "Jesus said to her, \"I am the resurrection and the life. The one who believes in me will live, even though they die; and whoever lives by believing in me will never die.\"",
@@ -158,32 +282,63 @@
       "textColor": "#FFFFFF",
       "duration": 10000,
       "transition": "fadeWhite"
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/PXL_20240617_003551493.MP.jpg",
+      "src": "photos/memorial-thai.jpeg",
       "duration": 8000,
       "transition": "fadeBlack",
       "kenBurns": true
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/IMG_4353.JPG",
+      "src": "photos/IMG_3259.jpg",
+      "duration": 8000,
+      "transition": "fadeWhite",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4431.JPG",
+      "duration": 8000,
+      "transition": "hearts",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/614629336_10241525042165226_3093473684621906119_n.jpg",
+      "duration": 8000,
+      "transition": "heavensLight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/5440951a1c6eff47229d87513f4eda184bd91560-1.jpeg",
       "duration": 8000,
       "transition": "slideLeft",
       "kenBurns": true
-    }
-,
+    },
     {
       "type": "photo",
-      "src": "photos/IMG_4418.JPG",
+      "src": "photos/PXL_20230510_160534075.MP.jpg",
+      "duration": 8000,
+      "transition": "slideRight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4644.PNG",
       "duration": 8000,
       "transition": "slideUp",
       "kenBurns": true
-    }
-,
+    },
+    {
+      "type": "photo",
+      "src": "photos/PXL_20240617_003507074.MP.jpg",
+      "duration": 8000,
+      "transition": "slideDown",
+      "kenBurns": true
+    },
     {
       "type": "verse",
       "text": "For I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future, nor any powers, neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord.",
@@ -194,8 +349,63 @@
       "textColor": "#FFFFFF",
       "duration": 10000,
       "transition": "fadeBlack"
-    }
-,
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4334.PNG",
+      "duration": 8000,
+      "transition": "slideDown",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4282.PNG",
+      "duration": 8000,
+      "transition": "fadeBlack",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/memorial-english.jpeg",
+      "duration": 8000,
+      "transition": "fadeWhite",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4297.PNG",
+      "duration": 8000,
+      "transition": "hearts",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/614981510_10241525042485234_5528130500001019829_n.jpg",
+      "duration": 8000,
+      "transition": "heavensLight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/PXL_20240617_003551493.MP.jpg",
+      "duration": 8000,
+      "transition": "slideLeft",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4353.JPG",
+      "duration": 8000,
+      "transition": "slideRight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4294.PNG",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    },
     {
       "type": "verse",
       "text": "We are confident, I say, and would prefer to be away from the body and at home with the Lord.",
@@ -206,8 +416,56 @@
       "textColor": "#FFFFFF",
       "duration": 10000,
       "transition": "fadeWhite"
-    }
-,
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4288.PNG",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/PXL_20251003_004409200.jpg",
+      "duration": 8000,
+      "transition": "slideDown",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/615052924_10241525041365206_4589666439421282501_n.jpg",
+      "duration": 8000,
+      "transition": "fadeBlack",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_5029.JPG",
+      "duration": 8000,
+      "transition": "fadeWhite",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/5440951a1c6eff47229d87513f4eda184bd91560-2.jpeg",
+      "duration": 8000,
+      "transition": "hearts",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/5440951a1c6eff47229d87513f4eda184bd91560-3.jpeg",
+      "duration": 8000,
+      "transition": "heavensLight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4283.PNG",
+      "duration": 8000,
+      "transition": "slideLeft",
+      "kenBurns": true
+    },
     {
       "type": "verse",
       "text": "For to me, to live is Christ and to die is gain.",
@@ -218,8 +476,56 @@
       "textColor": "#FFFFFF",
       "duration": 10000,
       "transition": "fadeWhite"
-    }
-,
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4293.PNG",
+      "duration": 8000,
+      "transition": "slideRight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/614326217_10241525040245178_7871643493433170705_n.jpg",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4290.PNG",
+      "duration": 8000,
+      "transition": "slideDown",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/kiss.jpg",
+      "duration": 8000,
+      "transition": "fadeBlack",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/prayer-3.jpeg",
+      "duration": 8000,
+      "transition": "fadeWhite",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4299.PNG",
+      "duration": 8000,
+      "transition": "hearts",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/614461077_10241525041565211_6298952784934305613_n.jpg",
+      "duration": 8000,
+      "transition": "heavensLight",
+      "kenBurns": true
+    },
     {
       "type": "verse",
       "text": "Brothers and sisters, we do not want you to be uninformed about those who sleep in death, so that you do not grieve like the rest of mankind, who have no hope. For we believe that Jesus died and rose again, and so we believe that God will bring with Jesus those who have fallen asleep in him.",
@@ -230,6 +536,55 @@
       "textColor": "#333333",
       "duration": 10000,
       "transition": "fadeBlack"
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4303.PNG",
+      "duration": 8000,
+      "transition": "slideLeft",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/615292640_10241525043525260_7714934720897847513_n.jpg",
+      "duration": 8000,
+      "transition": "slideRight",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4284.PNG",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4287.PNG",
+      "duration": 8000,
+      "transition": "slideDown",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/IMG_4291.PNG",
+      "duration": 8000,
+      "transition": "fadeBlack",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/614269338_10241525040845193_8297429927670562296_n.jpg",
+      "duration": 8000,
+      "transition": "fadeWhite",
+      "kenBurns": true
+    },
+    {
+      "type": "photo",
+      "src": "photos/615064342_10241525044325280_331255764570624018_n.jpg",
+      "duration": 8000,
+      "transition": "hearts",
+      "kenBurns": true
     }
   ]
 }
