@@ -252,12 +252,18 @@ class MemorialSlideshow {
         const img = slideElement.querySelector('.slide-image');
         if (!img) return null;
 
-        // Random zoom amount (5-8%)
-        const zoomAmount = 1 + (Math.random() * 0.03 + 0.05);
+        // Reduce Ken Burns intensity on large landscape screens (TV)
+        const isLargeScreen = window.innerWidth >= 1200 && window.innerWidth > window.innerHeight;
+        const zoomRange = isLargeScreen ? 0.02 : 0.03;
+        const zoomBase = isLargeScreen ? 0.02 : 0.05;
+        const panRange = isLargeScreen ? 2 : 6;
+
+        // Random zoom amount
+        const zoomAmount = 1 + (Math.random() * zoomRange + zoomBase);
 
         // Random pan direction
-        const panX = (Math.random() - 0.5) * 6; // -3% to 3%
-        const panY = (Math.random() - 0.5) * 6;
+        const panX = (Math.random() - 0.5) * panRange;
+        const panY = (Math.random() - 0.5) * panRange;
 
         // Random direction (zoom in or out)
         const zoomIn = Math.random() > 0.5;

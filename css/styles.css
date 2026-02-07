@@ -49,18 +49,45 @@ html, body {
 
 /* Photo slides */
 .slide-image {
-    width: 110%;
-    height: 110%;
-    min-width: 110%;
-    min-height: 110%;
-    object-fit: cover;
-    object-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
     image-orientation: from-image;
     display: none;
 }
 
 .slide.photo-slide .slide-image {
     display: block;
+}
+
+/* Mobile & tablet: cover looks good on smaller screens */
+@media (max-width: 1199px) {
+    .slide-image {
+        width: 110%;
+        height: 110%;
+        object-fit: cover;
+    }
+}
+
+/* Large landscape screens (TV / desktop monitors 1200px+) */
+@media (min-width: 1200px) and (orientation: landscape) {
+    .slide-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center center;
+    }
+}
+
+/* 4K / Ultra HD TVs */
+@media (min-width: 3000px) {
+    .slide-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center center;
+    }
 }
 
 .slide.photo-slide .verse-card {
