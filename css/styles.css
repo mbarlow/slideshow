@@ -1,0 +1,334 @@
+/* Memorial Slideshow Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Main container */
+#slideshow-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+}
+
+/* Slide base styles */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+.slide.next {
+    z-index: 5;
+}
+
+/* Photo slides */
+.slide-image {
+    width: 110%;
+    height: 110%;
+    min-width: 110%;
+    min-height: 110%;
+    object-fit: cover;
+    object-position: center;
+    image-orientation: from-image;
+    display: none;
+}
+
+.slide.photo-slide .slide-image {
+    display: block;
+}
+
+.slide.photo-slide .verse-card {
+    display: none;
+}
+
+/* Verse card styles */
+.verse-card {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem;
+    max-width: 85%;
+    max-height: 85%;
+}
+
+.slide.verse-slide .verse-card {
+    display: flex;
+}
+
+.slide.verse-slide .slide-image {
+    display: none;
+}
+
+.verse-text-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.verse-ref-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    min-height: 2em;
+}
+
+.verse-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: opacity 1s ease-in-out;
+}
+
+.verse-thai {
+    font-family: 'Sarabun', sans-serif;
+    font-style: normal;
+    display: none;
+}
+
+.verse-english {
+    display: block;
+}
+
+.verse-english.hidden {
+    display: none;
+}
+
+.verse-thai.visible {
+    display: block;
+}
+
+.verse-reference {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1rem, 2.5vw, 1.75rem);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+    transition: opacity 1s ease-in-out;
+}
+
+.verse-ref-thai {
+    font-family: 'Sarabun', sans-serif;
+    display: none;
+}
+
+.verse-ref-english {
+    display: block;
+}
+
+.verse-ref-english.hidden {
+    display: none;
+}
+
+.verse-ref-thai.visible {
+    display: block;
+}
+
+/* Muted color palette backgrounds */
+.bg-sage {
+    background-color: #9CAF88;
+}
+
+.bg-soft-blue {
+    background-color: #8BA4B4;
+}
+
+.bg-warm-cream {
+    background-color: #F5F0E6;
+}
+
+.bg-dusty-rose {
+    background-color: #C9B1A1;
+}
+
+.bg-muted-lavender {
+    background-color: #B8A9C9;
+}
+
+/* Transition overlay */
+#transition-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    background-color: #000;
+}
+
+#transition-overlay.fade-black {
+    background-color: #000;
+}
+
+#transition-overlay.fade-white {
+    background-color: #fff;
+}
+
+#transition-overlay.heavens-light {
+    background: radial-gradient(ellipse at center, rgba(255, 255, 240, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+/* Hearts overlay */
+#hearts-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#hearts-overlay svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ken Burns container */
+.ken-burns-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ken-burns-container .slide-image {
+    transform-origin: center center;
+}
+
+/* Slide transition states */
+.slide.slide-out-left {
+    transform: translateX(-100%);
+}
+
+.slide.slide-out-right {
+    transform: translateX(100%);
+}
+
+.slide.slide-out-up {
+    transform: translateY(-100%);
+}
+
+.slide.slide-out-down {
+    transform: translateY(100%);
+}
+
+.slide.slide-in-left {
+    transform: translateX(-100%);
+}
+
+.slide.slide-in-right {
+    transform: translateX(100%);
+}
+
+.slide.slide-in-up {
+    transform: translateY(100%);
+}
+
+.slide.slide-in-down {
+    transform: translateY(-100%);
+}
+
+/* Responsive adjustments */
+@media (orientation: portrait) {
+    .verse-text {
+        font-size: clamp(1.25rem, 5vw, 2.5rem);
+    }
+
+    .verse-reference {
+        font-size: clamp(0.9rem, 3vw, 1.5rem);
+    }
+
+    .verse-card {
+        padding: 2rem;
+        max-width: 90%;
+    }
+}
+
+@media (orientation: landscape) {
+    .verse-text {
+        font-size: clamp(1.5rem, 3.5vw, 3rem);
+    }
+
+    .verse-reference {
+        font-size: clamp(1rem, 2vw, 1.75rem);
+    }
+
+    .verse-card {
+        max-width: 75%;
+    }
+}
+
+/* Tablet optimizations (Pixel Tablet ~11" screen) */
+@media (min-width: 800px) and (max-width: 1400px) {
+    .verse-text {
+        font-size: clamp(2.75rem, 6vw, 4rem);
+    }
+
+    .verse-reference {
+        font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    }
+
+    .verse-card {
+        padding: 4rem;
+    }
+}
+
+/* Pixel Tablet specific (2560x1600 resolution) */
+@media (min-width: 1500px) {
+    .verse-text {
+        font-size: clamp(3rem, 5.5vw, 5rem);
+    }
+
+    .verse-reference {
+        font-size: clamp(2rem, 3vw, 3rem);
+    }
+
+    .verse-card {
+        padding: 5rem;
+        max-width: 70%;
+    }
+}
+
+/* Fullscreen mode tweaks */
+:fullscreen #slideshow-container,
+:-webkit-full-screen #slideshow-container {
+    width: 100vw;
+    height: 100vh;
+}

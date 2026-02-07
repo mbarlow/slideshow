@@ -1,0 +1,235 @@
+{
+  "settings": {
+    "defaultDuration": 8000,
+    "defaultTransitionDuration": 1500,
+    "startSlideDuration": 15000,
+    "verseDuration": 10000,
+    "kenBurnsEnabled": true
+  },
+  "slides": [
+    {
+      "type": "photo",
+      "src": "photos/start.jpg",
+      "duration": 15000,
+      "transition": "fadeBlack",
+      "kenBurns": true,
+      "isStart": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_3259.jpg",
+      "duration": 8000,
+      "transition": "fadeWhite",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_3260.JPG",
+      "duration": 8000,
+      "transition": "slideRight",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/PXL_20251003_004409200.jpg",
+      "duration": 8000,
+      "transition": "fadeBlack",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "verse",
+      "text": "Do not let your hearts be troubled. You believe in God; believe also in me. My Father's house has many rooms; if that were not so, would I have told you that I am going there to prepare a place for you?",
+      "textThai": "อย่าให้ใจของท่านทั้งหลายเป็นทุกข์เลย ท่านวางใจในพระเจ้า จงวางใจในเราด้วย ในพระนิเวศของพระบิดาเรามีที่อยู่มากมาย ถ้าไม่มีเราคงบอกท่านแล้ว เพราะเราไปจัดเตรียมที่ไว้สำหรับพวกท่าน",
+      "reference": "John 14:1-2",
+      "referenceThai": "ยอห์น 14:1-2",
+      "background": "#9CAF88",
+      "textColor": "#FFFFFF",
+      "duration": 10000,
+      "transition": "heavensLight"
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_4644.PNG",
+      "duration": 8000,
+      "transition": "slideLeft",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_4352.PNG",
+      "duration": 8000,
+      "transition": "hearts",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_5029.JPG",
+      "duration": 8000,
+      "transition": "slideRight",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "verse",
+      "text": "He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away.",
+      "textThai": "พระเจ้าจะทรงเช็ดน้ำตาทุกหยดจากตาของเขา จะไม่มีความตายอีกต่อไป จะไม่มีการคร่ำครวญ การร้องไห้ หรือความเจ็บปวดอีกต่อไป เพราะยุคเดิมนั้นผ่านพ้นไปแล้ว",
+      "reference": "Revelation 21:4",
+      "referenceThai": "วิวรณ์ 21:4",
+      "background": "#8BA4B4",
+      "textColor": "#FFFFFF",
+      "duration": 10000,
+      "transition": "fadeWhite"
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_4336.PNG",
+      "duration": 8000,
+      "transition": "slideDown",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_3613.PNG",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/PXL_20230510_160534075.MP.jpg",
+      "duration": 8000,
+      "transition": "slideLeft",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "verse",
+      "text": "Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me.",
+      "textThai": "แม้ข้าพระองค์จะเดินผ่านหุบเขาเงามัจจุราช ข้าพระองค์จะไม่กลัวอันตรายใดๆ เพราะพระองค์สถิตกับข้าพระองค์ คทาและธารพระกรของพระองค์ปลอบโยนข้าพระองค์",
+      "reference": "Psalm 23:4",
+      "referenceThai": "สดุดี 23:4",
+      "background": "#F5F0E6",
+      "textColor": "#333333",
+      "duration": 10000,
+      "transition": "fadeWhite"
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_2077.JPG",
+      "duration": 8000,
+      "transition": "slideDown",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_4334.PNG",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_4431.JPG",
+      "duration": 8000,
+      "transition": "hearts",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "verse",
+      "text": "Jesus said to her, \"I am the resurrection and the life. The one who believes in me will live, even though they die; and whoever lives by believing in me will never die.\"",
+      "textThai": "พระเยซูตรัสกับนางว่า \"เราเป็นชีวิตและการเป็นขึ้นจากความตาย คนที่วางใจในเราจะมีชีวิตอีกแม้ว่าเขาจะตายไป และทุกคนที่มีชีวิตอยู่และวางใจในเราจะไม่มีวันตายเลย\"",
+      "reference": "John 11:25-26",
+      "referenceThai": "ยอห์น 11:25-26",
+      "background": "#C9B1A1",
+      "textColor": "#FFFFFF",
+      "duration": 10000,
+      "transition": "fadeWhite"
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/PXL_20240617_003551493.MP.jpg",
+      "duration": 8000,
+      "transition": "fadeBlack",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_4353.JPG",
+      "duration": 8000,
+      "transition": "slideLeft",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "photo",
+      "src": "photos/IMG_4418.JPG",
+      "duration": 8000,
+      "transition": "slideUp",
+      "kenBurns": true
+    }
+,
+    {
+      "type": "verse",
+      "text": "For I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future, nor any powers, neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord.",
+      "textThai": "เพราะข้าพเจ้าเชื่อมั่นว่า ไม่ว่าความตายหรือชีวิต ไม่ว่าทูตสวรรค์หรือวิญญาณชั่ว ไม่ว่าปัจจุบันหรืออนาคต ไม่ว่าฤทธิ์อำนาจใดๆ ไม่ว่าเบื้องสูงหรือเบื้องลึก หรือสิ่งอื่นใดในสรรพสิ่งที่ทรงสร้าง ไม่สามารถพรากเราจากความรักของพระเจ้าซึ่งมีอยู่ในพระเยซูคริสต์องค์พระผู้เป็นเจ้าของเราได้",
+      "reference": "Romans 8:38-39",
+      "referenceThai": "โรม 8:38-39",
+      "background": "#B8A9C9",
+      "textColor": "#FFFFFF",
+      "duration": 10000,
+      "transition": "fadeBlack"
+    }
+,
+    {
+      "type": "verse",
+      "text": "We are confident, I say, and would prefer to be away from the body and at home with the Lord.",
+      "textThai": "เรามั่นใจและเราปรารถนาที่จะจากกายนี้ไปอยู่กับองค์พระผู้เป็นเจ้ามากกว่า",
+      "reference": "2 Corinthians 5:8",
+      "referenceThai": "2 โครินธ์ 5:8",
+      "background": "#9CAF88",
+      "textColor": "#FFFFFF",
+      "duration": 10000,
+      "transition": "fadeWhite"
+    }
+,
+    {
+      "type": "verse",
+      "text": "For to me, to live is Christ and to die is gain.",
+      "textThai": "เพราะว่าสำหรับข้าพเจ้านั้น การมีชีวิตอยู่ก็คือพระคริสต์ และการตายก็คือกำไร",
+      "reference": "Philippians 1:21",
+      "referenceThai": "ฟีลิปปี 1:21",
+      "background": "#8BA4B4",
+      "textColor": "#FFFFFF",
+      "duration": 10000,
+      "transition": "fadeWhite"
+    }
+,
+    {
+      "type": "verse",
+      "text": "Brothers and sisters, we do not want you to be uninformed about those who sleep in death, so that you do not grieve like the rest of mankind, who have no hope. For we believe that Jesus died and rose again, and so we believe that God will bring with Jesus those who have fallen asleep in him.",
+      "textThai": "พี่น้องทั้งหลาย เราไม่อยากให้ท่านไม่รู้เรื่องของคนที่ล่วงหลับไป เพื่อท่านจะไม่เศร้าโศกอย่างคนอื่นๆ ที่ไม่มีความหวัง เพราะในเมื่อเราเชื่อว่าพระเยซูทรงสิ้นพระชนม์และทรงเป็นขึ้นมาอีก เราก็เชื่อด้วยว่าพระเจ้าจะทรงนำบรรดาคนที่ล่วงหลับไปในพระเยซูมากับพระองค์",
+      "reference": "1 Thessalonians 4:13-14",
+      "referenceThai": "1 เธสะโลนิกา 4:13-14",
+      "background": "#F5F0E6",
+      "textColor": "#333333",
+      "duration": 10000,
+      "transition": "fadeBlack"
+    }
+  ]
+}

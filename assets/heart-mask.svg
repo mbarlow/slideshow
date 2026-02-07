@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+  <defs>
+    <!-- Heart shape path for reuse -->
+    <path id="heart" d="M50,88 C25,65 5,50 5,30 C5,15 18,5 32,5 C40,5 47,10 50,18 C53,10 60,5 68,5 C82,5 95,15 95,30 C95,50 75,65 50,88 Z"/>
+  </defs>
+
+  <g id="hearts-collection">
+    <!-- Large center heart -->
+    <use href="#heart" transform="translate(0,0) scale(1)"/>
+
+    <!-- Medium hearts in corners -->
+    <use href="#heart" transform="translate(-35,-30) scale(0.5)"/>
+    <use href="#heart" transform="translate(35,-30) scale(0.5)"/>
+    <use href="#heart" transform="translate(-35,30) scale(0.5)"/>
+    <use href="#heart" transform="translate(35,30) scale(0.5)"/>
+
+    <!-- Small accent hearts -->
+    <use href="#heart" transform="translate(-50,0) scale(0.3)"/>
+    <use href="#heart" transform="translate(50,0) scale(0.3)"/>
+    <use href="#heart" transform="translate(0,-45) scale(0.35)"/>
+    <use href="#heart" transform="translate(0,45) scale(0.35)"/>
+
+    <!-- Tiny scattered hearts -->
+    <use href="#heart" transform="translate(-60,-40) scale(0.2)"/>
+    <use href="#heart" transform="translate(60,-40) scale(0.2)"/>
+    <use href="#heart" transform="translate(-60,40) scale(0.2)"/>
+    <use href="#heart" transform="translate(60,40) scale(0.2)"/>
+    <use href="#heart" transform="translate(-25,-55) scale(0.15)"/>
+    <use href="#heart" transform="translate(25,-55) scale(0.15)"/>
+    <use href="#heart" transform="translate(-25,55) scale(0.15)"/>
+    <use href="#heart" transform="translate(25,55) scale(0.15)"/>
+  </g>
+</svg>
