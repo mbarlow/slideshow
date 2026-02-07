@@ -587,7 +587,7 @@ class MemorialSlideshow {
         if (imageAspect >= viewportAspect * 0.95) return;
 
         // Pastel background
-        const pastels = ['#9CAF88', '#8BA4B4', '#F5F0E6', '#C9B1A1', '#B8A9C9'];
+        const pastels = ['#9CAF88', '#8BA4B4', '#C9B1A1', '#B8A9C9', '#A8C5A0', '#95B3C4', '#C4A882', '#D4BDB0'];
         const bg = pastels[Math.floor(Math.random() * pastels.length)];
         slideElement.style.backgroundColor = bg;
 
@@ -656,7 +656,7 @@ class MemorialSlideshow {
             const y = vh * 0.1 + Math.random() * vh * 0.6;
             const rotation = Math.random() * 360;
 
-            const opacity = 0.08 + Math.random() * 0.06;
+            const opacity = 0.15 + Math.random() * 0.10;
             const color = `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
 
             const daisy = document.createElement('div');
@@ -704,7 +704,7 @@ class MemorialSlideshow {
             if (!valid) continue;
             placed.push({ cx, cy, radius });
 
-            const opacity = 0.04 + Math.random() * 0.07;
+            const opacity = 0.12 + Math.random() * 0.10;
             const color = `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
             const rotation = Math.random() * 360;
 
