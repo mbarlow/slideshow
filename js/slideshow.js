@@ -204,21 +204,23 @@ class MemorialSlideshow {
         const refEnglish = slideElement.querySelector('.verse-ref-english');
         const refThai = slideElement.querySelector('.verse-ref-thai');
 
-        // Reset classes
+        // Reset classes and previous styling
         slideElement.classList.remove('photo-slide', 'verse-slide');
-
-        // Clear any existing daisies
         this.clearDaisies(slideElement);
+        img.style.width = '';
+        img.style.height = '';
+        img.style.objectFit = '';
+        img.style.border = '';
+        slideElement.style.backgroundColor = '';
 
         if (slideData.type === 'photo') {
             slideElement.classList.add('photo-slide');
             img.src = slideData.src;
             img.alt = slideData.alt || 'Memorial photo';
-            // Reset any existing transform - Ken Burns will set it properly
             img.style.transform = 'scale(1) translate(0%, 0%)';
 
-            // Generate daisies once the image dimensions are known
-            const onReady = () => this.generateDaisies(slideElement, img);
+            // Apply large-screen decoration after image dimensions are known
+            const onReady = () => this.applyPhotoDecor(slideElement, img);
             if (img.complete && img.naturalWidth) {
                 onReady();
             } else {
@@ -246,6 +248,12 @@ class MemorialSlideshow {
             refEnglish.style.opacity = '1';
             refThai.style.opacity = '0';
 
+            // Reset font sizes from previous verse fitting
+            verseEnglish.style.fontSize = '';
+            verseThai.style.fontSize = '';
+            refEnglish.style.fontSize = '';
+            refThai.style.fontSize = '';
+
             // Apply colors
             const colors = this.getVerseColors(slideData);
             slideElement.style.backgroundColor = colors.background;
@@ -253,6 +261,9 @@ class MemorialSlideshow {
             verseThai.style.color = colors.text;
             refEnglish.style.color = colors.text;
             refThai.style.color = colors.text;
+
+            // Fit long verses after layout
+            requestAnimationFrame(() => this.fitVerseText(slideElement));
         }
     }
 
@@ -558,37 +569,58 @@ class MemorialSlideshow {
         container.remove();
     }
 
-    // --- Daisy decoration for pillarbox empty space ---
+    // --- Photo decoration for large screens ---
 
-    calculateEmptySpace(img) {
+    applyPhotoDecor(slideElement, img) {
         const vw = window.innerWidth;
         const vh = window.innerHeight;
         const iw = img.naturalWidth;
         const ih = img.naturalHeight;
 
-        if (!iw || !ih) return null;
-
-        // Only on large landscape screens where contain mode leaves empty space
-        if (vw < 1200 || vw <= vh) return null;
+        if (!iw || !ih) return;
+        if (vw < 1200 || vw <= vh) return;
 
         const imageAspect = iw / ih;
         const viewportAspect = vw / vh;
 
-        if (imageAspect < viewportAspect) {
-            // Portrait image on landscape screen → pillarbox bars on sides
-            const renderedWidth = vh * imageAspect;
-            const barWidth = (vw - renderedWidth) / 2;
-            if (barWidth < 60) return null;
-            return {
-                bars: [
-                    { x: 0, y: 0, width: barWidth, height: vh },
-                    { x: vw - barWidth, y: 0, width: barWidth, height: vh }
-                ]
-            };
-        }
+        // Only decorate when there's meaningful empty space
+        if (imageAspect >= viewportAspect * 0.95) return;
 
-        return null;
+        // Pastel background
+        const pastels = ['#9CAF88', '#8BA4B4', '#F5F0E6', '#C9B1A1', '#B8A9C9'];
+        const bg = pastels[Math.floor(Math.random() * pastels.length)];
+        slideElement.style.backgroundColor = bg;
+
+        // Size photo smaller with padding and white border
+        const borderWidth = 3;
+        const edgePadding = Math.min(vw, vh) * 0.045;
+        const maxW = vw - edgePadding * 2 - borderWidth * 2;
+        const maxH = vh - edgePadding * 2 - borderWidth * 2;
+        const scale = Math.min(maxW / iw, maxH / ih);
+        const displayW = Math.round(iw * scale);
+        const displayH = Math.round(ih * scale);
+
+        img.style.width = displayW + 'px';
+        img.style.height = displayH + 'px';
+        img.style.objectFit = 'cover';
+        img.style.border = `${borderWidth}px solid rgba(255, 255, 255, 0.85)`;
+
+        // Calculate pillarbox bar areas around the bordered photo
+        const totalImgW = displayW + borderWidth * 2;
+        const barWidth = (vw - totalImgW) / 2;
+        if (barWidth < 40) return;
+
+        const space = {
+            bars: [
+                { x: 0, y: 0, width: barWidth, height: vh },
+                { x: vw - barWidth, y: 0, width: barWidth, height: vh }
+            ]
+        };
+
+        this.generateDaisies(slideElement, space);
     }
+
+    // --- Daisy decoration for pillarbox empty space ---
 
     createDaisySVG(color) {
         const petals = [];
@@ -603,16 +635,51 @@ class MemorialSlideshow {
         </svg>`;
     }
 
-    generateDaisies(slideElement, img) {
-        const space = this.calculateEmptySpace(img);
-        if (!space) return;
-
+    generateDaisies(slideElement, space) {
         const container = document.createElement('div');
         container.className = 'daisies-container';
 
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const placed = [];
+
+        // --- Large partial daisies (1-2, peeking from outer edges) ---
+        const largeDaisyCount = 1 + Math.floor(Math.random() * 2);
+        for (let i = 0; i < largeDaisyCount; i++) {
+            const bar = space.bars[i % space.bars.length];
+            const isLeft = bar.x === 0;
+            const largeSize = vh * (0.25 + Math.random() * 0.15);
+
+            // Position so 40-60% is off the screen edge
+            const offAmount = largeSize * (0.4 + Math.random() * 0.2);
+            const x = isLeft ? -offAmount : (vw - largeSize + offAmount);
+            const y = vh * 0.1 + Math.random() * vh * 0.6;
+            const rotation = Math.random() * 360;
+
+            const useDark = Math.random() > 0.5;
+            const opacity = 0.08 + Math.random() * 0.06;
+            const color = useDark
+                ? `rgba(0, 0, 0, ${opacity.toFixed(3)})`
+                : `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
+
+            const daisy = document.createElement('div');
+            daisy.className = 'daisy';
+            daisy.style.cssText = `
+                left: ${x}px;
+                top: ${y}px;
+                width: ${largeSize}px;
+                height: ${largeSize}px;
+                transform: rotate(${rotation}deg);
+            `;
+            daisy.innerHTML = this.createDaisySVG(color);
+            container.appendChild(daisy);
+
+            placed.push({ cx: x + largeSize / 2, cy: y + largeSize / 2, radius: largeSize / 2 });
+        }
+
+        // --- Small scattered daisies (11, no overlaps) ---
         const daisyCount = 11;
-        const baseSize = Math.max(30, Math.min(window.innerWidth, window.innerHeight) * 0.03);
-        const placed = []; // track center points + radii for collision
+        const baseSize = Math.max(30, Math.min(vw, vh) * 0.03);
 
         for (let i = 0; i < daisyCount; i++) {
             const size = baseSize + Math.random() * baseSize * 2;
@@ -620,7 +687,6 @@ class MemorialSlideshow {
             let x, y, cx, cy;
             let valid = false;
 
-            // Try up to 30 positions to avoid overlap
             for (let attempt = 0; attempt < 30; attempt++) {
                 const bar = space.bars[Math.floor(Math.random() * space.bars.length)];
                 x = bar.x + Math.random() * Math.max(0, bar.width - size);
@@ -638,13 +704,15 @@ class MemorialSlideshow {
                 if (valid) break;
             }
 
-            if (!valid) continue; // skip this daisy if no space found
-
+            if (!valid) continue;
             placed.push({ cx, cy, radius });
 
+            const useDark = Math.random() > 0.5;
             const opacity = 0.04 + Math.random() * 0.07;
+            const color = useDark
+                ? `rgba(0, 0, 0, ${opacity.toFixed(3)})`
+                : `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
             const rotation = Math.random() * 360;
-            const color = `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
 
             const daisy = document.createElement('div');
             daisy.className = 'daisy';
@@ -661,7 +729,6 @@ class MemorialSlideshow {
 
         slideElement.insertBefore(container, slideElement.firstChild);
 
-        // Gentle fade-in
         anime({
             targets: container,
             opacity: [0, 1],
@@ -673,6 +740,57 @@ class MemorialSlideshow {
     clearDaisies(slideElement) {
         const existing = slideElement.querySelector('.daisies-container');
         if (existing) existing.remove();
+    }
+
+    // --- Verse text auto-fitting ---
+
+    fitVerseText(slideElement) {
+        const card = slideElement.querySelector('.verse-card');
+        if (!card) return;
+
+        const engText = slideElement.querySelector('.verse-english');
+        const thaiText = slideElement.querySelector('.verse-thai');
+        const engRef = slideElement.querySelector('.verse-ref-english');
+        const thaiRef = slideElement.querySelector('.verse-ref-thai');
+        const allTexts = slideElement.querySelectorAll('.verse-text');
+        const allRefs = slideElement.querySelectorAll('.verse-reference');
+
+        const maxHeight = window.innerHeight * 0.80;
+
+        const shrinkStep = () => {
+            allTexts.forEach(t => {
+                const s = parseFloat(getComputedStyle(t).fontSize);
+                t.style.fontSize = (s * 0.9) + 'px';
+            });
+            allRefs.forEach(r => {
+                const s = parseFloat(getComputedStyle(r).fontSize);
+                r.style.fontSize = (s * 0.9) + 'px';
+            });
+        };
+
+        // Measure with English visible
+        let iterations = 0;
+        while (card.scrollHeight > maxHeight && iterations < 15) {
+            shrinkStep();
+            iterations++;
+        }
+
+        // Temporarily show Thai to measure it too
+        engText.style.display = 'none';
+        engRef.style.display = 'none';
+        thaiText.style.display = 'block';
+        thaiRef.style.display = 'block';
+
+        while (card.scrollHeight > maxHeight && iterations < 25) {
+            shrinkStep();
+            iterations++;
+        }
+
+        // Restore display to CSS defaults
+        engText.style.display = '';
+        engRef.style.display = '';
+        thaiText.style.display = '';
+        thaiRef.style.display = '';
     }
 
     async transitionHeavensLight(duration) {
