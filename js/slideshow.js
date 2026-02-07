@@ -21,7 +21,6 @@ class MemorialSlideshow {
         this.currentSlide = document.getElementById('current-slide');
         this.nextSlide = document.getElementById('next-slide');
         this.transitionOverlay = document.getElementById('transition-overlay');
-        this.heartsOverlay = document.getElementById('hearts-overlay');
 
         // Ken Burns state
         this.kenBurnsAnimation = null;
@@ -202,12 +201,23 @@ class MemorialSlideshow {
         // Reset classes
         slideElement.classList.remove('photo-slide', 'verse-slide');
 
+        // Clear any existing daisies
+        this.clearDaisies(slideElement);
+
         if (slideData.type === 'photo') {
             slideElement.classList.add('photo-slide');
             img.src = slideData.src;
             img.alt = slideData.alt || 'Memorial photo';
             // Reset any existing transform - Ken Burns will set it properly
             img.style.transform = 'scale(1) translate(0%, 0%)';
+
+            // Generate daisies once the image dimensions are known
+            const onReady = () => this.generateDaisies(slideElement, img);
+            if (img.complete && img.naturalWidth) {
+                onReady();
+            } else {
+                img.addEventListener('load', onReady, { once: true });
+            }
         } else if (slideData.type === 'verse') {
             slideElement.classList.add('verse-slide');
 
@@ -474,56 +484,165 @@ class MemorialSlideshow {
     }
 
     async transitionHearts(duration) {
-        const heartsGroup = document.querySelector('#hearts-group');
+        // Create floating hearts container
+        const container = document.createElement('div');
+        container.className = 'hearts-float-container';
+        this.container.appendChild(container);
 
-        // Generate heart positions
-        heartsGroup.innerHTML = this.generateHeartPaths();
+        const heartPath = 'M50,90 C25,68 2,50 2,28 C2,12 15,2 30,2 C39,2 46,8 50,16 C54,8 61,2 70,2 C85,2 98,12 98,28 C98,50 75,68 50,90 Z';
+        const colors = [
+            'rgba(220, 140, 165, 0.75)',
+            'rgba(200, 110, 140, 0.65)',
+            'rgba(240, 175, 195, 0.55)',
+            'rgba(185, 95, 125, 0.70)',
+            'rgba(235, 160, 180, 0.60)',
+        ];
 
-        // Show hearts overlay
-        this.heartsOverlay.style.opacity = '1';
+        const heartCount = 20;
+        const hearts = [];
+        const baseSize = Math.max(50, Math.min(window.innerWidth, window.innerHeight) * 0.06);
 
-        // Animate hearts expanding
-        await anime({
-            targets: '#hearts-group path',
-            scale: [0, 20],
-            opacity: [1, 1],
-            easing: 'easeInOutQuad',
-            duration: duration,
-            delay: anime.stagger(50, { from: 'center' })
-        }).finished;
+        for (let i = 0; i < heartCount; i++) {
+            const size = baseSize + Math.random() * baseSize * 1.5;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const heart = document.createElement('div');
+            heart.className = 'float-heart';
+            heart.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${Math.random() * 90 + 5}%;
+                top: ${105 + Math.random() * 15}%;
+            `;
+            heart.innerHTML = `<svg viewBox="0 0 100 95"><path d="${heartPath}" fill="${color}"/></svg>`;
+            container.appendChild(heart);
+            hearts.push(heart);
+        }
 
-        // Swap slides during animation
+        // Hearts float upward with gentle sway
+        const floatDuration = duration * 1.8;
+        const animation = anime({
+            targets: hearts,
+            top: () => `${-15 - Math.random() * 20}%`,
+            opacity: [0, 0.9],
+            translateX: () => `${(Math.random() - 0.5) * 50}px`,
+            rotate: () => `${(Math.random() - 0.5) * 30}deg`,
+            easing: 'easeInOutSine',
+            duration: floatDuration,
+            delay: anime.stagger(70),
+        });
+
+        // Swap slides behind the hearts at midpoint
+        await new Promise(resolve => setTimeout(resolve, duration * 0.55));
+
         this.currentSlide.style.opacity = '0';
         this.nextSlide.style.opacity = '1';
         this.nextSlide.style.visibility = 'visible';
         this.nextSlide.style.transform = 'translate(0, 0)';
 
-        // Hide overlay
-        this.heartsOverlay.style.opacity = '0';
-        heartsGroup.innerHTML = '';
+        await animation.finished;
+
+        // Gentle fade-out of the whole container
+        await anime({
+            targets: container,
+            opacity: 0,
+            duration: 400,
+            easing: 'easeOutQuad'
+        }).finished;
+
+        container.remove();
     }
 
-    generateHeartPaths() {
-        const heartPath = 'M50,88 C25,65 5,50 5,30 C5,15 18,5 32,5 C40,5 47,10 50,18 C53,10 60,5 68,5 C82,5 95,15 95,30 C95,50 75,65 50,88 Z';
-        const positions = [
-            { x: 50, y: 50, scale: 0.01 },  // Center
-            { x: 25, y: 30, scale: 0.01 },
-            { x: 75, y: 30, scale: 0.01 },
-            { x: 25, y: 70, scale: 0.01 },
-            { x: 75, y: 70, scale: 0.01 },
-            { x: 10, y: 50, scale: 0.01 },
-            { x: 90, y: 50, scale: 0.01 },
-            { x: 50, y: 15, scale: 0.01 },
-            { x: 50, y: 85, scale: 0.01 },
-            { x: 15, y: 20, scale: 0.01 },
-            { x: 85, y: 20, scale: 0.01 },
-            { x: 15, y: 80, scale: 0.01 },
-            { x: 85, y: 80, scale: 0.01 }
-        ];
+    // --- Daisy decoration for pillarbox empty space ---
 
-        return positions.map(pos =>
-            `<path d="${heartPath}" transform="translate(${pos.x - 50}, ${pos.y - 50}) scale(${pos.scale})" fill="black"/>`
-        ).join('');
+    calculateEmptySpace(img) {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
+
+        if (!iw || !ih) return null;
+
+        // Only on large landscape screens where contain mode leaves empty space
+        if (vw < 1200 || vw <= vh) return null;
+
+        const imageAspect = iw / ih;
+        const viewportAspect = vw / vh;
+
+        if (imageAspect < viewportAspect) {
+            // Portrait image on landscape screen → pillarbox bars on sides
+            const renderedWidth = vh * imageAspect;
+            const barWidth = (vw - renderedWidth) / 2;
+            if (barWidth < 60) return null;
+            return {
+                bars: [
+                    { x: 0, y: 0, width: barWidth, height: vh },
+                    { x: vw - barWidth, y: 0, width: barWidth, height: vh }
+                ]
+            };
+        }
+
+        return null;
+    }
+
+    createDaisySVG(color) {
+        const petals = [];
+        for (let i = 0; i < 8; i++) {
+            petals.push(
+                `<ellipse cx="50" cy="20" rx="10" ry="22" transform="rotate(${i * 45} 50 50)"/>`
+            );
+        }
+        return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="${color}">
+            ${petals.join('')}
+            <circle cx="50" cy="50" r="12"/>
+        </svg>`;
+    }
+
+    generateDaisies(slideElement, img) {
+        const space = this.calculateEmptySpace(img);
+        if (!space) return;
+
+        const container = document.createElement('div');
+        container.className = 'daisies-container';
+
+        const daisyCount = 11;
+        const baseSize = Math.max(30, Math.min(window.innerWidth, window.innerHeight) * 0.03);
+
+        for (let i = 0; i < daisyCount; i++) {
+            const bar = space.bars[Math.floor(Math.random() * space.bars.length)];
+            const size = baseSize + Math.random() * baseSize * 2;
+            const opacity = 0.04 + Math.random() * 0.07;
+            const rotation = Math.random() * 360;
+            const x = bar.x + Math.random() * Math.max(0, bar.width - size);
+            const y = Math.random() * Math.max(0, bar.height - size);
+            const color = `rgba(255, 255, 255, ${opacity.toFixed(3)})`;
+
+            const daisy = document.createElement('div');
+            daisy.className = 'daisy';
+            daisy.style.cssText = `
+                left: ${x}px;
+                top: ${y}px;
+                width: ${size}px;
+                height: ${size}px;
+                transform: rotate(${rotation}deg);
+            `;
+            daisy.innerHTML = this.createDaisySVG(color);
+            container.appendChild(daisy);
+        }
+
+        slideElement.insertBefore(container, slideElement.firstChild);
+
+        // Gentle fade-in
+        anime({
+            targets: container,
+            opacity: [0, 1],
+            duration: 2000,
+            easing: 'easeOutQuad'
+        });
+    }
+
+    clearDaisies(slideElement) {
+        const existing = slideElement.querySelector('.daisies-container');
+        if (existing) existing.remove();
     }
 
     async transitionHeavensLight(duration) {
